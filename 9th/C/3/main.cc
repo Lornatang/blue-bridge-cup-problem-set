@@ -1,9 +1,7 @@
 #include <iostream>
 using namespace std;
 
-using namespace std;
-int main()
-{
+void func() {
   int n;
   int num1 = 0;
   int num2 = 0;
@@ -24,4 +22,10 @@ int main()
   }
   printf("%d\n",num1>num2?num2:num1);
   return 0;
+}
+
+int main(int argc, char const *argv[])
+{
+    func();
+    return 0;
 }
