@@ -79,10 +79,10 @@ int main() {
           cout << arr[j];
         else
           cout << " ";
-      for (int z = 0; z <= 7; z++)  //将数组置0，相当于memset函数的功能
-        arr[z] = 0;
-      if (i % 2 == 1)  //控制换行
-        cout << "\n";
+      // Reset the array
+      for (int z = 0; z <= 7; z++) arr[z] = 0;
+      //  Line up every two bytes
+      if (i % 2 == 1) cout << "\n";
     }
   }
   return 0;
