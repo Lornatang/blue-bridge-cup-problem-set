@@ -55,9 +55,9 @@ void exchange(int value) {
   }
   //  Find the complement of a negative number
   if (value < 0)
-    for (int i = 0; i <= 7; i++)
+    for (int i = 0; i < 8; i++)
       if (arr[i] == 1 && i < 7) {
-        for (int j = i + 1; j <= 7; j++)
+        for (int j = i + 1; j < 8; j++)
           if (arr[j] == 0)
             arr[j] = 1;
           else
@@ -69,10 +69,10 @@ void exchange(int value) {
 int main() {
   int a[32];
   //  Ten characters
-  for (int e = 0; e <= 9; e++) {
+  for (int e = 0; e < 10; e++) {
     //  A number consists of 32 bytes
-    for (int i = 0; i <= 31; i++) cin >> a[i];
-    for (int i = 0; i <= 31; i++) {
+    for (int i = 0; i < 32; i++) cin >> a[i];
+    for (int i = 0; i < 32; i++) {
       exchange(a[i]);
       for (int j = 7; j >= 0; j--)
         if (arr[j] == 1)
