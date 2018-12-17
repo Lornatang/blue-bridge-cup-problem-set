@@ -22,4 +22,28 @@ x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔�
 #include <iostream>
 using namespace std;
 
-void 
+#define Max(a, b) (a > b ? a : b)
+#define Min(a, b) (a < b ? a : b)
+
+void dynamic_programming() {
+  int dp[1000][3];
+  int n, m;
+  scanf("%d%d", &n, &m);
+  for (int i = 1; i <= n; i++) {
+    dp[i][1] = i;
+  }
+  for (int cnt = 2; cnt <= m; cnt++) {
+    for (int ind = 1; ind <= n; ind++) {
+      dp[ind][cnt] = 1 + dp[ind - 1][cnt];
+      for (int k = 2; k <= ind; k++)
+        dp[ind][cnt] =
+            Min(dp[ind][cnt], 1 + Max(dp[k - 1][cnt - 1], dp[ind - k][cnt]));
+    }
+  }
+  printf("%d\n", dp[n][m]);
+}
+
+int main() {
+  dynamic_programming();
+  return 0;
+}
