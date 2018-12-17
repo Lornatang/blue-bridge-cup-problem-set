@@ -38,13 +38,13 @@
 #include <iostream>
 using namespace std;
 
+int arr[8];
 /**
  * 10 convert 2.
  * para:   value.
  * return: None.
  */
 void exchange(int value) {
-  int arr[8];
   int va = abs(value);
   // convert 2
   int i = 0;
@@ -53,29 +53,25 @@ void exchange(int value) {
     va /= 2;
     i++;
   }
-  if (value < 0)  //负数求补码
-  {
-    for (int i = 0; i <= 7; i++) {
+  //  Find the complement of a negative number
+  if (value < 0)
+    for (int i = 0; i <= 7; i++)
       if (arr[i] == 1 && i < 7) {
-        for (int j = i + 1; j <= 7; j++) {
+        for (int j = i + 1; j <= 7; j++)
           if (arr[j] == 0)
             arr[j] = 1;
           else
             arr[j] = 0;
-        }
         break;
       }
-    }
-  }
 }
 
 int main() {
   int a[32];
-  int arr[8];
-  for (int e = 0; e <= 9; e++)  //十行数据
-  {
-    for (int i = 0; i <= 31; i++)  //一行32个数据
-      cin >> a[i];
+  //  Ten characters
+  for (int e = 0; e <= 9; e++) {
+    //  A number consists of 32 bytes
+    for (int i = 0; i <= 31; i++) cin >> a[i];
     for (int i = 0; i <= 31; i++) {
       exchange(a[i]);
       for (int j = 7; j >= 0; j--)
