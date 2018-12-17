@@ -76,7 +76,7 @@ int main() {
       exchange(a[i]);
       for (int j = 7; j >= 0; j--)
         if (arr[j] == 1)
-          cout << *;
+          cout << "*";
         else
           cout << " ";
       // Reset the array
