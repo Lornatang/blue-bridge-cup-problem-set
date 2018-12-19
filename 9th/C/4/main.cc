@@ -21,9 +21,6 @@ x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔�
 注意：需要填写的是一个整数，不要填写任何多余内容。
 */
 
-#define Max(a, b) (a > b ? a : b)
-#define Min(a, b) (a < b ? a : b)
-
 /**
  * The commonly used dynamic programming algorithm is adopted
  * para:
@@ -41,16 +38,6 @@ void dynamic_programming(int n, int m) {
     for (int j = 2; j <= m; j++)
       for (int k = 2; k < i; k++)
         dp[i][j] = min(max(dp[i - k][j] + 1, dp[k - 1][j - 1] + 1), dp[i][j]);
-  // for (int cnt = 2; cnt <= m; cnt++)
-  //   for (int ind = 1; ind <= n; ind++) {
-  //     //  dp[1][2] = 1 + dp[0][2]
-  //     //  dp[2][2] = 1 + (1 + dp[1][2])...
-  //     dp[ind][cnt] = 1 + dp[ind - 1][cnt];
-
-  //     for (int k = 2; k <= ind; k++)
-  //       dp[ind][cnt] =
-  //           Min(dp[ind][cnt], 1 + Max(dp[k - 1][cnt - 1], dp[ind - k][cnt]));
-  //   }
   cout << dp[n][m] << "\n";
 }
 
