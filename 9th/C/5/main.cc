@@ -11,39 +11,92 @@
 */
 
 #include <iostream>
+using namespace std;
 
-int quick_select(int a[], int l, int r, int k) {
-  int p = rand() % (r - l + 1) + l;
-  int x = a[p];
+/**
+ * look for the value that is smaller than value, which is the value of the \
+ * sorted array.
+ * para:  int arr[], int left, int right, int key.
+ * return:quick_sort().
+ */
+int quick_select(int arr[], int l, int r, int k) {
+  //  select a random number as the reference number
+  int p = r;
+  //  swap arr[p], arr[r]
+  int x = arr[p];
   {
-    int t = a[p];
-    a[p] = a[r];
-    a[r] = t;
+    int t = arr[p];
+    arr[p] = arr[r];
+    arr[r] = t;
   }
   int i = l, j = r;
   while (i < j) {
-    while (i < j && a[i] < x) i++;
+    while (i < j && arr[i] < x) i++;
     if (i < j) {
-      a[j] = a[i];
+      arr[j] = arr[i];
       j--;
     }
-    while (i < j && a[j] > x) j--;
+    while (i < j && arr[j] > x) j--;
     if (i < j) {
-      a[i] = a[j];
+      arr[i] = arr[j];
       i++;
     }
   }
-  a[i] = x;
+  arr[i] = x;
   p = i;
-  if (i - l + 1 == k) return a[i];
+  if (i - l + 1 == k) return arr[i];
   if (i - l + 1 < k)
-    return quick_select(a, l, i - 1, k);  //填空
+    return quick_select(arr, i + 1, r, k - (i - l + 1));  //填空
   else
-    return quick_select(a, l, i - 1, k);
+    return quick_select(arr, l, i - 1, k);
+}
+
+/**
+ * swap two values.
+ * para:  *a, *b.
+ * return: None.
+ */
+void swap(int *a, int *b) {
+  int tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+
+/**
+ * This code can write
+ * look for the value that is smaller than value, which is the value of the\
+ * sorted array.
+ * para:
+ *        arr[]: numbers of array.
+ *        begin: array begin.
+ *        end:   array end.
+ *        index: array index.
+ * return:None.
+ */
+void quick_sort(int arr[], int begin, int end, int index) {
+  int i, j;
+  if (begin < end) {
+    i = begin + 1;
+    j = end;
+  }
+
+  while (i < j) {
+    if (arr[i] > arr[begin]) {
+      swap(&arr[i], &arr[j]);
+      j--;
+    } else
+      i++;
+  }
+
+  if (arr[i] >= arr[begin]) i--;
+
+  swap(&arr[i], &arr[j]);
+  quick_sort(arr, begin, i, index);
+  quick_sort(arr, j, end, index);
 }
 
 int main() {
   int a[] = {1, 4, 2, 8, 5, 7, 23, 58, 16, 27, 55, 13, 26, 24, 12};
-  printf("%d\n", quick_select(a, 0, 14, 5));
+  cout << quick_select(a, 0, 14, 8) << "\n";
   return 0;
 }
