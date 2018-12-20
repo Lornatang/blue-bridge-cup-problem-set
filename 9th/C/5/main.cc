@@ -21,7 +21,8 @@ using namespace std;
  */
 int quick_select(int arr[], int l, int r, int k) {
   //  select a random number as the reference number
-  int p = r;
+  //  p is positioned in the middle of the array
+  int p = rand() % (r - l + 1) + l;
   //  swap arr[p], arr[r]
   int x = arr[p];
   {
@@ -97,6 +98,6 @@ void quick_sort(int arr[], int begin, int end, int index) {
 
 int main() {
   int a[] = {1, 4, 2, 8, 5, 7, 23, 58, 16, 27, 55, 13, 26, 24, 12};
-  cout << quick_select(a, 0, 14, 8) << "\n";
+  cout << quick_select(a, 0, 14, 5) << "\n";
   return 0;
 }
