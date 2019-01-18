@@ -45,5 +45,34 @@ main函数需要返回0;
 提交程序时，注意选择所期望的语言类型和编译器类型。
 */
 
+#include <math.h>
 #include <iostream>
 using namespace std;
+
+int main() {
+  int x, y;
+
+  while (cin >> x >> y) {
+    if (y > 0) {
+      if (abs(x) <= y)
+        cout << 3 * y + (y * y - y) / 2 * 8 + x << "\n";
+      else {
+        if (x > 0)
+          cout << 3 * x + (x * x - x) / 2 * 8 + 2 * x - y << "\n";
+        else
+          cout << 3 * -x + (x * x + x) / 2 * 8 + 2 * x + y << "\n";
+      }
+    } else {
+      if (y - 1 <= x && x <= -y)
+        cout << 7 * -y + (y * y + y) / 2 * 8 - x << "\n";
+      else {
+        if (x > 0)
+          cout << 7 * x + (x * x - x) / 2 * 8 - 2 * x - y << "\n";
+        else
+          cout << -7 * x - 7 + (x * x + 3 * x + 2) / 2 * 8 - 2 * x + y - 1
+               << "\n";
+      }
+    }
+  }
+  return 0;
+}
