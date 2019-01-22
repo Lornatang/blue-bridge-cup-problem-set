@@ -59,4 +59,54 @@ main函数需要返回0;
 */
 
 #include <iostream>
+#include <vector>
 using namespace std;
+
+const int maxn = 1e5 + 5;
+
+/**
+ * n is the number of log rows。
+ * d is the time to log.
+ * k is tieba hot.
+ */
+int n, d, k;
+vector<int> t[maxn];
+int ans[maxn];
+
+bool judge(int x) {
+  int len = t[x].size();
+  if (len < k) return 0;
+  sort(t[x].begin(), t[x].end());
+
+  int l = 0, r = 0, sum = 0;
+  while (l <= r && r < len) {
+    sum += 1;
+    if (sum >= k) {
+      if (t[x][r] - t[x][l] < d)  //注意是小于
+        return 1;
+      else
+        l++, sum--;
+    }
+    r++;
+  }
+
+  return 0;
+}
+
+int main() {
+  cin >> n >> d >> k;
+
+  for (int i = 1; i <= n; i++) {
+    int ts, id;
+    cin >> ts >> id;
+    t[id].push_back(ts);
+  }
+
+  int cnt = 0;
+  for (int i = 1; i < maxn; i++)
+    if (judge(i)) ans[++cnt] = i;
+
+  for (int i = 1; i <= cnt; i++) cout << ans[i] << "\n";
+
+  return 0;
+}
