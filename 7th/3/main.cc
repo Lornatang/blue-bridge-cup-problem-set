@@ -3,7 +3,6 @@
 
 int ans = 0;
 int num[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-bool visit[9];
 
 void solve() {
   double sum = (double)num[0] + (double)num[1] / num[2] +
