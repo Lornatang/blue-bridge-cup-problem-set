@@ -9,7 +9,7 @@ bool used[maxn] = {0};
 void dfs(int index) {
   if (index == len) cout << ans << "\n";
 
-  for (int i = 0; i < len; ++i)
+  for (int i = 0; i < len; i++)
     if (!used[i]) {
       ans[index] = s[i];
       used[i] = true;
