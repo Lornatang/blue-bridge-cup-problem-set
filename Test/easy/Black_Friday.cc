@@ -15,12 +15,12 @@ int week_day(int year, int month, int day) {
 }
 
 int main() {
-  int year;
-  scanf("%d", &year);
+  int year1, year2;
+  scanf("%d %d", &year1, &year2);
 
-  for (int month = 1; month <= 12; month++) {
-    int day = week_day(year, month, 13);
-    if (day == 5) {
+  for (int year = year1; year <= year2; year++) {
+    int day = week_day(year, 10, 1);
+    if (day == 7) {
       cnt++;
     }
   }
