@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+int cnt;
+
 int week_day(int year, int month, int day) {
   if (month == 1 || month == 2) {
     month += 12;
@@ -13,11 +15,11 @@ int week_day(int year, int month, int day) {
 }
 
 int main() {
-  int y, day, cnt = 0;
-  y = 1998;
+  int year;
+  scanf("%d", &year);
 
-  for (int i = 1; i <= 12; ++i) {
-    day = week_day(y, i, 13);
+  for (int month = 1; month <= 12; month++) {
+    int day = week_day(year, month, 13);
     if (day == 5) {
       cnt++;
     }
