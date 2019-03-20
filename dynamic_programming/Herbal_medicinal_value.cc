@@ -31,7 +31,6 @@ T代表总共能够用来采药的时间，M代表山洞里的草药的数目。
 */
 
 #include <iostream>
-using namespace std;
 
 int main(void) {
   int T, m;
@@ -41,7 +40,7 @@ int main(void) {
 
   for (int i = 1; i <= m; i++) {
     scanf("%d %d", &t, &v);
-    for (int j = T; j >= t; j--) f[j] = max(f[j], f[j - t] + v);
+    for (int j = T; j >= t; j--) f[j] = std::max(f[j], f[j - t] + v);
   }
 
   printf("%d\n", f[T]);
