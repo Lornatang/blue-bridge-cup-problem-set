@@ -56,11 +56,33 @@ void quick_sort(int s[], int l, int r) {
   }
 }
 
-int main(void) {
-  int s[12] = {0, 1, 3, 2, 5, 4, 5, 6, 8, 9, 2, 12};
-  quick_sort(s, 0, 11);
-  for (int i = 0; i < 12; i++) printf("%d ", s[i]);
+void solve(vector<int> *A, int *a, int *b, int k, int n) {
+  int m = k + 1;
+  while (m <= n && a[m] < b[k]) m += 1;
+  if (m <= n) {
+    A->push_back(m);
+    solve(A, a, b, m, n);
+  }
+}
 
+int main(void) {
+  int s[12] = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
+
+  int f[12] = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
+
+  //先将f按从小到大排序，s的位置随f而动
+  quick_sort(f, 0, 12 - 1);
+  quick_sort(s, 0, 12 - 1);
+
+  vector<int> *A = new vector<int>;
+
+  solve(A, s, f, 0, 12 - 1);
+
+  vector<int>::iterator iter;
+
+  for (iter = A->begin(); iter != A->end(); iter++) printf("%d ", *iter);
   printf("\n");
+  delete A;
+
   return 0;
 }
