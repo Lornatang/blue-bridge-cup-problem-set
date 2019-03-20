@@ -66,9 +66,9 @@ void solve(vector<int> *A, int *a, int *b, int k, int n) {
 }
 
 int main(void) {
-  int s[12] = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
+  int s[11] = {1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
 
-  int f[12] = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
+  int f[11] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
   //先将f按从小到大排序，s的位置随f而动
   quick_sort(f, 0, 12 - 1);
@@ -76,7 +76,7 @@ int main(void) {
 
   vector<int> *A = new vector<int>;
 
-  solve(A, s, f, 0, 12 - 1);
+  solve(A, s, f, 0, 11 - 1);
 
   vector<int>::iterator iter;
 
