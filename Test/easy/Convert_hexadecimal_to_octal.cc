@@ -1,16 +1,16 @@
-#include <cstring>
 #include <iostream>
 using namespace std;
+
 int main() {
   string hex[10];
   string bin[10];
   string oct[10];
+
   int n;
-  cin >> n;
-  for (int i = 0; i < n; i++) {
-    cin >> hex[i];
-  }
-  // 16进制转2进制
+  scanf("%d", &n);
+  for (int i = 0; i < n; i++) cin >> hex[i];
+
+  // Hex to Bin
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < hex[i].length(); j++) {
       switch (hex[i][j]) {
