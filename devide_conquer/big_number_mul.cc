@@ -25,9 +25,8 @@ string BigNumMultiply(string s1, string s2) {
 
 int main() {
   string s1, s2;
-  while (cin >> s1 >> s2) {
-    cout << s1 << "*" << s2 << "=" << endl;
-    cout << BigNumMultiply(s1, s2) << endl;
-  }
+  cin >> s1 >> s2;
+  cout << BigNumMultiply(s1, s2) << endl;
+
   return 0;
 }
