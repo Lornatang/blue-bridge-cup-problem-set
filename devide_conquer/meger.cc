@@ -22,16 +22,64 @@ List *insert(List *L, int data) {
 
   return L;
 }
+/**
+ *
+ListNode *Merge(ListNode *pHead1, ListNode *pHead2) {
+  if (pHead1 == NULL) {
+    return pHead2;
+  } else if (pHead2 == NULL) {
+    return pHead1;
+  }
+  // 2个链表都不为空链表
+  else {
+    if (0) {
+      ///////////////递归实现///////////////
 
-int main(void) {
-  List *L;
-  init(L);
-  insert(L, 2);
-  insert(L, 3);
-  insert(L, 4);
+      ListNode *pMerge = NULL;
 
-  List *p;
+      if (pHead1->val < pHead2->val) {
+        pMerge = pHead1;
+        pMerge->next = Merge(pHead1->next, pHead2);
+      } else {
+        pMerge = pHead2;
+        pMerge->next = Merge(pHead2->next, pHead1);
+      }
 
-  for (p = L->next; p != L; p = p->next) printf("%d ", p->data);
-  return 0;
+      return pMerge;
+    } else {
+      ///////////////非递归实现///////////////
+      ListNode *pMerge = NULL;
+      ListNode *pCur = NULL;
+
+      while (pHead1 != NULL && pHead2 != NULL) {
+        if (pHead1->val < pHead2->val) {
+          if (pMerge == NULL) {
+            pMerge = pCur = pHead1;
+          } else {
+            pCur->next = pHead1;
+            pCur = pCur->next;
+          }
+          pHead1 = pHead1->next;
+        } else {
+          if (pMerge == NULL) {
+            pMerge = pCur = pHead2;
+          } else {
+            pCur->next = pHead2;
+            pCur = pCur->next;
+          }
+          pHead2 = pHead2->next;
+        }
+      }
+      if (pHead1 == NULL) {
+        pCur->next = pHead2;
+      }
+      if (pHead2 == NULL) {
+        pCur->next = pHead1;
+      }
+
+      return pMerge;
+    }
+  }
 }
+*/
+int main(void) { return 0; }
