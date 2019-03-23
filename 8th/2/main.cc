@@ -29,12 +29,12 @@ bool check(ll n) {
 
 int main() {
   for (int d = 2; d < 1000; d++)
-    for (ll n = 2; n < 1000; ++n) {
+    for (ll n = 2; n < 1000; n++) {
       if (check(n) && check(n + 1 * d) && check(n + 2 * d) &&
           check(n + 3 * d) && check(n + 4 * d) && check(n + 5 * d) &&
           check(n + 6 * d) && check(n + 7 * d) && check(n + 8 * d) &&
           check(n + 9 * d)) {
-        cout << d << "\n";
+        printf("%d\n", d);
         break;
       }
     }
